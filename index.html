@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Svatební den &ndash; Petr a Magdaléna</title>
+
+  <!-- Kaligrafický script + čisté body písmo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/armelie" rel="stylesheet">
+  
+
+  <style>
+    :root {
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-hero: clamp(2.8rem,   1.8rem  + 4vw,    4rem);
+
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+
+      /* neutrální podklad */
+      --color-bg: #ffffff;
+      --color-text: #2b2b2b;
+      --color-text-muted: #6b6b6b;
+
+      /* tvoje svatební paleta */
+      --color-pink-light: #EAA4C5;
+      --color-pink-dark: #D282A6;
+      --color-lavender-light: #C9B6F9;
+      --color-lavender-dark: #7D79A3;
+      --color-apricot-light: #FFAF36;
+      --color-apricot-dark: #F78E00;
+      --color-salmon-light: #FFB28B;
+      --color-salmon-dark: #F35400;
+      --color-green-light: #A6BA72;
+      --color-green-dark: #4A6D00;
+
+      --radius-md: 0.75rem;
+      --radius-full: 9999px;
+      --shadow-soft: 0 12px 32px rgba(0,0,0,0.06);
+
+      --content-width: min(960px, 100% - 2rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: var(--content-width);
+      margin-inline: auto;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: var(--space-2);
+    }
+
+    .brand {
+      font-family: 'Armelie', 'Lucida Handwriting', cursive;
+      font-size: 1.35rem;
+      color: var(--color-green-dark);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+    }
+
+    nav a {
+      position: relative;
+      padding-block: 0.25rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.15rem;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-pink-dark), var(--color-lavender-dark));
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 180ms ease-out;
+    }
+
+    nav a:hover::after,
+    nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .section {
+      padding-block: var(--space-12);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-6);
+    }
+
+    .section-kicker {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .section-title {
+      font-family: 'Armelie', 'Lucida Handwriting', cursive;
+      font-size: var(--text-xl);
+      font-weight: normal;
+    }
+
+    .section-intro {
+      margin-top: var(--space-2);
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+
+
+    .brand-heart {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-green-dark);
+      margin-inline: 0.15rem;
+      vertical-align: middle;
+      position: relative;
+      top: -0.02rem;
+    }
+
+    .brand-heart svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
+
+    /* HERO */
+    .hero {
+      padding-block: var(--space-16);
+      background:
+        radial-gradient(circle at top left, rgba(234,164,197,0.35), transparent 55%),
+        radial-gradient(circle at top right, rgba(201,182,249,0.35), transparent 55%),
+        linear-gradient(to bottom, #ffffff, #ffffff);
+    }
+
+    .hero-inner {
+      text-align: center;
+    }
+
+    .hero-heading {
+      font-family: 'Armelie', 'Lucida Handwriting', cursive;
+      font-size: var(--text-hero);
+      line-height: 1.1;
+      font-weight: normal;
+      margin-bottom: var(--space-2);
+    }
+
+    .hero-subtitle {
+      margin-top: var(--space-4);
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      font-weight: normal;
+    }
+
+    .hero-meta {
+      margin-top: var(--space-4);
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      justify-content: center;
+    }
+
+    .hero-meta-item {
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .hero-actions {
+      margin-top: var(--space-6);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-full);
+      border: none;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--color-pink-dark), var(--color-lavender-dark));
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 150ms ease-out, box-shadow 150ms ease-out, filter 150ms ease-out;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .btn-outline {
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(0,0,0,0.08);
+      font-size: var(--text-sm);
+      background: rgba(255,255,255,0.9);
+      cursor: pointer;
+    }
+
+    /* Paletka barev jako kolečka */
+    .palette-row {
+      margin-top: var(--space-8);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .palette-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+    }
+
+    .palette-pink   { background: linear-gradient(135deg, var(--color-pink-light),   var(--color-pink-dark)); }
+    .palette-lav    { background: linear-gradient(135deg, var(--color-lavender-light), var(--color-lavender-dark)); }
+    .palette-apricot{ background: linear-gradient(135deg, var(--color-apricot-light), var(--color-apricot-dark)); }
+    .palette-salmon { background: linear-gradient(135deg, var(--color-salmon-light),  var(--color-salmon-dark)); }
+    .palette-green  { background: linear-gradient(135deg, var(--color-green-light),   var(--color-green-dark)); }
+
+    /* Další sekce - zachování původní struktury, ale jen s tvou paletou */
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .story-text p + p { margin-top: var(--space-3); }
+
+    .story-photo-placeholder {
+      border-radius: var(--radius-md);
+      border: 2px dashed rgba(0,0,0,0.1);
+      padding: var(--space-8);
+      text-align: center;
+      color: var(--color-text-muted);
+      background:
+        linear-gradient(135deg, rgba(201,182,249,0.2), rgba(234,164,197,0.1));
+    }
+
+    .story-photo-placeholder span {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-xs);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-md);
+      background: #fdfdfd;
+      border: 1px solid rgba(0,0,0,0.05);
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .details-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #ffffff;
+    }
+
+    .details-card h3 {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: var(--space-2);
+      color: var(--color-text-muted);
+    }
+
+    .timeline {
+      border-left: 2px solid rgba(0,0,0,0.06);
+      padding-left: var(--space-4);
+      margin-top: var(--space-2);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-3);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -0.7rem;
+      top: 0.2rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-apricot-dark);
+    }
+
+    .timeline-time { font-size: var(--text-sm); font-weight: 600; }
+    .timeline-text { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    .info-list {
+      list-style: none;
+      margin-top: var(--space-2);
+    }
+
+    .info-list li {
+      display: flex;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .info-badge {
+      min-width: 1.7rem;
+      height: 1.7rem;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      background: rgba(166,186,114,0.18);
+      color: var(--color-green-dark);
+    }
+
+    .gifts-card {
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(243,84,0,0.25);
+      background:
+        linear-gradient(135deg, rgba(255,178,139,0.15), rgba(243,84,0,0.03));
+    }
+
+    .faq-list { list-style: none; margin-top: var(--space-3); }
+    .faq-item + .faq-item { margin-top: var(--space-3); }
+    .faq-question { font-weight: 600; font-size: var(--text-sm); }
+    .faq-answer { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 0.25rem; }
+
+    .rsvp-card {
+      padding: var(--space-6);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(216,130,166,0.25);
+      background:
+        linear-gradient(135deg, rgba(234,164,197,0.18), rgba(201,182,249,0.08));
+      text-align: center;
+    }
+
+    .rsvp-card p {
+      max-width: 42ch;
+      margin-inline: auto;
+      margin-bottom: var(--space-4);
+      color: var(--color-text);
+    }
+
+    .rsvp-note {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+    }
+
+    
+    #pribeh {
+      background: linear-gradient(180deg, rgba(201,182,249,0.14), rgba(255,255,255,0) 40%);
+    }
+
+    #galerie {
+      background: linear-gradient(180deg, rgba(255,178,139,0.12), rgba(255,255,255,0) 45%);
+    }
+
+    #detaily .details-card:nth-child(1) {
+      background: linear-gradient(135deg, rgba(234,164,197,0.12), rgba(210,130,166,0.04));
+    }
+
+    #detaily .details-card:nth-child(2) {
+      background: linear-gradient(135deg, rgba(201,182,249,0.14), rgba(125,121,163,0.04));
+    }
+
+    #detaily .details-card:nth-child(3) {
+      background: linear-gradient(135deg, rgba(255,175,54,0.14), rgba(247,142,0,0.04));
+    }
+
+    #program {
+      background: linear-gradient(180deg, rgba(255,175,54,0.08), rgba(255,255,255,0) 45%);
+    }
+
+    #informace {
+      background: linear-gradient(180deg, rgba(166,186,114,0.22), rgba(255,255,255,0) 42%);
+    }
+
+    #informace .section-title,
+    #informace .section-kicker {
+      color: var(--color-green-dark);
+    }
+
+    #dary {
+      background: linear-gradient(180deg, rgba(255,178,139,0.14), rgba(255,255,255,0) 45%);
+    }
+
+    #faq {
+      background: linear-gradient(180deg, rgba(234,164,197,0.10), rgba(201,182,249,0.10), rgba(255,255,255,0) 50%);
+    }
+
+    .gallery-item:nth-child(1) { background: rgba(234,164,197,0.16); }
+    .gallery-item:nth-child(2) { background: rgba(201,182,249,0.18); }
+    .gallery-item:nth-child(3) { background: rgba(255,178,139,0.18); }
+    .gallery-item:nth-child(4) { background: rgba(166,186,114,0.18); }
+
+    .btn-outline {
+      border: 1px solid rgba(74,109,0,0.18);
+      color: var(--color-green-dark);
+    }
+
+    footer.site-footer {
+      padding-block: var(--space-6);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      text-align: center;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 768px) {
+      header.site-header { position: fixed; }
+      body { padding-top: 4rem; }
+      .site-header-inner { gap: var(--space-3); }
+      nav ul { gap: var(--space-2); flex-wrap: wrap; }
+      .story-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="brand">P <span class="brand-heart" aria-hidden="true"><svg viewBox="0 0 32 32" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M16 28.2c-1.8-1.5-3.4-2.9-4.9-4.2-1.8-1.6-3.5-3.1-4.7-4.8-1.1-1.5-1.8-3-1.8-4.9 0-2 .8-3.9 2.1-5.2C8 7.8 9.4 7.2 11 7.2c1.8 0 3.5.8 4.7 2.4.2.3.5.4.8.1 1.3-1.6 3.1-2.5 5-2.5 1.8 0 3.4.7 4.6 1.9 1.3 1.3 2 3 2 5.1 0 2-.8 3.7-2.2 5.4-1.3 1.6-3 3-4.9 4.6-1.3 1.1-2.7 2.3-4.9 4z" fill="currentColor"/></svg></span> M</div>
+      <nav aria-label="Hlavní navigace">
+        <ul>
+          <li><a href="#uvod">Úvod</a></li>
+          <li><a href="#pribeh">Náš příběh</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#detaily">Kdy &amp; kde</a></li>
+          <li><a href="#program">Program</a></li>
+          <li><a href="#informace">Praktické info</a></li>
+          <li><a href="#dary">Dary</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Úvod / Hero -->
+    <section id="uvod" class="section hero" aria-labelledby="uvod-heading">
+      <div class="container hero-inner">
+        <h1 id="uvod-heading" class="hero-heading">Petr a Magdaléna</h1>
+        <p class="hero-subtitle">Zveme vás, abyste s námi oslavili náš svatební den.</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">12. září 2026</div>
+          <div class="hero-meta-item">Obřad: kostel sv. Jana Křtitele, Podskala</div>
+          <div class="hero-meta-item">Hostina: Podskala a okolí</div>
+        </div>
+        <div class="hero-actions">
+          <a href="#rsvp" class="btn-primary">Potvrdit účast</a>
+          <a href="#detaily" class="btn-outline">Podrobnosti dne</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Náš příběh -->
+    <section id="pribeh" class="section" aria-labelledby="pribeh-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Náš příběh</p>
+          <h2 id="pribeh-heading" class="section-title">Jak to všechno začalo</h2>
+          <p class="section-intro">Krátké okénko do toho, odkud se bereme a co nás nejvíc spojuje.</p>
+        </div>
+        <div class="story-grid">
+          <div class="story-text">
+            <p>
+              Seznámili jsme se díky Magdaléninu bratranci, který nás propojil s Petrem a měl pocit,
+              že by z toho mohlo něco být. Chvíli to trvalo, než se naše cesty opravdu potkaly,
+              ale po návratu z Austrálie jsme si konečně domluvili první rande v Praze u piva.
+            </p>
+            <p>
+              Od té chvíle začal náš společný příběh. Nejvíc nás spojuje cestování &ndash; nejlépe nám je,
+              když jsme někde na cestách, objevujeme nová místa a ukládáme si další zážitky, které můžeme
+              jednou vyprávět dál.
+            </p>
+            <p>
+              K zasnoubení došlo na Tenerife, na pláži při západu slunce. Byl to klidný, krásný okamžik,
+              který pro nás znamenal začátek nové kapitoly, jež vyvrcholí právě vaším dnem s námi.
+            </p>
+          </div>
+          <div class="story-photo-placeholder">
+            <strong>Vaše společná fotka</strong>
+            <span>Sem můžete vložit svou oblíbenou fotografii (nahraďte tento blok za &lt;img&gt;).</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="section" aria-labelledby="galerie-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Galerie</p>
+          <h2 id="galerie-heading" class="section-title">Malé okénko do našich momentů</h2>
+          <p class="section-intro">Čtyři fotografie, které máme rádi &ndash; můžete sem nahrát své obrázky z cest, zásnub nebo běžných dní.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">Fotka 1</div>
+          <div class="gallery-item">Fotka 2</div>
+          <div class="gallery-item">Fotka 3</div>
+          <div class="gallery-item">Fotka 4</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kdy & kde -->
+    <section id="detaily" class="section" aria-labelledby="detaily-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Kdy &amp; kde</p>
+          <h2 id="detaily-heading" class="section-title">Praktické informace o dni</h2>
+          <p class="section-intro">Základní přehled o obřadu, hostině a orientačních časech, ať víte, kam a kdy dorazit.</p>
+        </div>
+        <div class="details-grid">
+          <article class="details-card">
+            <h3>Datum</h3>
+            <p><strong>12. září 2026</strong></p>
+            <p>Budeme rádi, když dorazíte s lehkou časovou rezervou před začátkem obřadu.</p>
+          </article>
+          <article class="details-card">
+            <h3>Obřad</h3>
+            <p><strong>Kostel sv. Jana Křtitele, Podskala</strong></p>
+            <p>Obřad proběhne v krásném kostele v Podskale. Po jeho skončení se společně přesuneme na další část dne.</p>
+          </article>
+          <article class="details-card">
+            <h3>Hostina</h3>
+            <p><strong>Podskala a okolí</strong></p>
+            <p>Po obřadu nás čeká hostina, přípitek, večeře a večerní program. Vše bude probíhat v Podskale a blízkém okolí.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program dne -->
+    <section id="program" class="section" aria-labelledby="program-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Program dne</p>
+          <h2 id="program-heading" class="section-title">Jak bude náš den přibližně vypadat</h2>
+          <p class="section-intro">Níže najdete orientační harmonogram. Časy mohou být mírně orientační, ale rámec dne zůstane stejný.</p>
+        </div>
+        <div class="timeline" aria-label="Časová osa dne">
+          <div class="timeline-item">
+            <div class="timeline-time">13:00</div>
+            <div class="timeline-text">Příjezd hostů ke kostelu, usazení a příprava na obřad.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">13:30</div>
+            <div class="timeline-text">Svatební obřad v kostele sv. Jana Křtitele.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">15:00</div>
+            <div class="timeline-text">Přípitek, společné focení a první občerstvení.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">18:00</div>
+            <div class="timeline-text">Večeře a oficiální část večera.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">20:00+</div>
+            <div class="timeline-text">Hudba, tanec, další zábava a volná část večera.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Praktické informace: doprava & ubytování -->
+    <section id="informace" class="section" aria-labelledby="informace-heading" style="background-color: rgba(166,186,114,0.10);">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Praktické informace</p>
+          <h2 id="informace-heading" class="section-title">Doprava, parkování a ubytování</h2>
+          <p class="section-intro">Aby byl váš den co nejpříjemnější, přinášíme základní informace k dopravě a ubytování.</p>
+        </div>
+        <ul class="info-list">
+          <li>
+            <div class="info-badge">A</div>
+            <div>
+              <strong>Doprava autem</strong><br>
+              Nejjednodušší cesta je autem. Prosíme, počítejte s časovou rezervou na parkování a krátkou docházku ke kostelu.
+            </div>
+          </li>
+          <li>
+            <div class="info-badge">B</div>
+            <div>
+              <strong>Parkování</strong><br>
+              V okolí kostela bude možné parkovat na vyhrazených místech. Konkrétní pokyny vám před svatbou upřesníme.
+            </div>
+          </li>
+          <li>
+            <div class="info-badge">C</div>
+            <div>
+              <strong>Ubytování</strong><br>
+              Pokud budete potřebovat přenocovat, doporučíme vám několik penzionů a hotelů v okolí. Informace zašleme společně s pozvánkou.
+            </div>
+          </li>
+          <li>
+            <div class="info-badge">D</div>
+            <div>
+              <strong>Další program</strong><br>
+              Jestli se potkáme i před nebo po hlavním dni (např. na společné snídani či procházce), dáme vám včas vědět.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Dary -->
+    <section id="dary" class="section" aria-labelledby="dary-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Dary</p>
+          <h2 id="dary-heading" class="section-title">Jak nám můžete udělat radost</h2>
+          <p class="section-intro">Nejvíc pro nás znamená, že dorazíte. Pokud nám chcete dát dárek, tady je naše přání.</p>
+        </div>
+        <div class="gifts-card">
+          <p>
+            Největším dárkem pro nás bude, když s námi prožijete náš svatební den a budete u toho.
+          </p>
+          <p>
+            Pokud nám přesto chcete udělat radost hmotným darem, nejvíc oceníme peněžní příspěvek na naši svatební cestu.
+            Pomůžete nám tak vytvořit další společné vzpomínky někde za sluncem a mořem.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ / Další informace -->
+    <section id="faq" class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Často se ptáte</p>
+          <h2 id="faq-heading" class="section-title">Ještě pár praktických poznámek</h2>
+          <p class="section-intro">Několik otázek a odpovědí, které vám mohou ušetřit psaní zpráv.</p>
+        </div>
+        <ul class="faq-list">
+          <li class="faq-item">
+            <div class="faq-question">Můžeme vzít děti?</div>
+            <div class="faq-answer">Děti jsou u nás vítané. Prosíme jen, abyste nám v RSVP formuláři napsali, kolik vás dorazí, ať s tím počítáme.</div>
+          </li>
+          <li class="faq-item">
+            <div class="faq-question">Co si vzít na sebe?</div>
+            <div class="faq-answer">Budeme rádi za polofomální až pohodlné slavnostní oblečení. Barevně se můžete inspirovat naším svatebním webem &ndash; odstíny růžové, levandulové, meruňkové, lososové a jemné zelené. Myslete prosím na to, že část dne strávíme venku, takže se hodí i něco praktičtějšího.</div>
+            <div class="palette-row" aria-label="Barevná paleta svatby">
+              <div class="palette-item">
+                <div class="palette-dot palette-pink"></div>
+                <span>Růžová</span>
+              </div>
+              <div class="palette-item">
+                <div class="palette-dot palette-lav"></div>
+                <span>Levandule</span>
+              </div>
+              <div class="palette-item">
+                <div class="palette-dot palette-apricot"></div>
+                <span>Meruňková</span>
+              </div>
+              <div class="palette-item">
+                <div class="palette-dot palette-salmon"></div>
+                <span>Lososová</span>
+              </div>
+              <div class="palette-item">
+                <div class="palette-dot palette-green"></div>
+                <span>Zelená</span>
+              </div>
+            </div
+          </li>
+          <li class="faq-item">
+            <div class="faq-question">Do kdy máme potvrdit účast?</div>
+            <div class="faq-answer">Prosíme, potvrďte svou účast co nejdříve prostřednictvím RSVP formuláře, ideálně několik týdnů před svatbou, abychom mohli vše dobře naplánovat.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="section" aria-labelledby="rsvp-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">RSVP</p>
+          <h2 id="rsvp-heading" class="section-title">Potvrďte prosím svou účast</h2>
+          <p class="section-intro">Online formulář je pro nás nejjednodušší způsob, jak mít přehled o počtu hostů, dětech i případných dietních omezeních.</p>
+        </div>
+        <div class="rsvp-card">
+          <p>
+            Prosíme, potvrďte svou účast prostřednictvím našeho RSVP formuláře. Zaberete tím jen pár minut
+            a nám to velmi pomůže s organizací, zasedacím pořádkem i cateringem.
+          </p>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Otevřít RSVP formulář</a>
+          <p class="rsvp-note">
+            Poznámka: Po vytvoření Google Form formuláře sem stačí vložit jeho odkaz (za znak <code>#</code> v atributu <code>href</code>).
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      &copy; 2026 &ndash; Svatební den Petra a Magdalény
+    </div>
+  </footer>
+</body>
+</html>
